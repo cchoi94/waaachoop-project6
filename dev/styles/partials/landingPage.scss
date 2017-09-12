@@ -1,0 +1,91 @@
+.landingPage {
+    height: 100vh;
+    text-align: center;
+    background-image:linear-gradient(rgba(21, 19, 19, 0.7) 5%, rgba(21, 19, 19, 0.7) 100%), url(/assets/heroImg2.gif);
+    background-position: bottom;
+    background-size: cover;
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(2deg)
+    }
+    
+    50%{
+        transform: rotate(-2deg)
+    }
+    
+    100%{
+        transform: rotate(2deg)
+    }
+}
+
+.landingPage h1 {
+    animation:rotate 2s linear infinite;
+    font-size: 100px;
+    padding: 100px 0;
+    color: #f77c2f;
+    line-height: 150px;
+}
+
+.landingPage span {
+    display: block;
+}
+
+.landingPage h3 {
+    line-height: 30px;
+    margin: 20px;
+    color: #dbdbff;
+}
+
+.landingPage p {
+    text-align: left;
+    margin-left: 50px;
+    color: #dbdbff;
+}
+
+.nameForm {
+    margin-top: 50px;
+}
+
+.nameForm input {
+    padding: 30px;
+    margin-bottom: 20px;
+    background: transparent;
+    color: #dbdbff;
+    border: none;
+    display: inline-block;
+    width: 500px;
+    text-align: center;
+}
+
+.nameForm input[type=text]:focus, 
+.nameForm input::placeholder { 
+    outline: none;
+    font-family: 'Press Start 2P';
+    font-size: 20px;
+    color: #dbdbff;
+}
+
+@keyframes flash {
+    0% {
+        opacity: 1
+    }
+    
+    25% {
+        opacity: 0
+    }
+    
+    75% {
+        opacity: 0
+    }
+    
+    100% {
+        opacity: 1
+    }
+}
+
+.nameForm h5 {
+    animation:flash 1.9s linear infinite;
+    color: #dbdbff;
+}

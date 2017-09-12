@@ -1,0 +1,18 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    background-color: #fff;
+    font-family: 'Press Start 2P';
+    font-size: 14px;
+    text-rendering: optimizeLegibility;
+}
+
+.wrapper {
+    max-width: 1170px;
+    margin: 0 auto;
+    position: relative;
+}
