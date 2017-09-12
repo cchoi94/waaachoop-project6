@@ -4,8 +4,17 @@ import {
     BrowserRouter as Router, 
     Route, Link, NavLink } from 'react-router-dom';
 import firebase from './firebase.js'
+import swal from 'sweetalert'
 
 const dbRef = firebase.database().ref('/leaderBoard');
+
+class Landing extends React.Component {
+    
+    
+    componentDidMount() {
+        
+    }
+}
 
 class App extends React.Component {
     constructor() {
@@ -82,7 +91,7 @@ class App extends React.Component {
             score: approvals,
         })
         
-        for (let i = 0; i < 5; i++)
+        for (let i = 0; i < 5; i++) 
         
         dbRef.push(leaderBoard)
     }
@@ -94,6 +103,9 @@ class App extends React.Component {
     } 
     
     handleNameSubmit(event) {
+        let name = this.state.nameValue
+        swal("Welcome Warrior", 
+             "Chops are life! Gain chops by clicking! Through time you will master chops and win chopping tournaments for our ultimate goal of gaining Bruce Lee's Approval!");
         document.getElementById('nameForm').reset()
         event.preventDefault();
     }
