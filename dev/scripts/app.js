@@ -216,7 +216,7 @@ class App extends React.Component {
                                         <h3>Tournament Result: <br></br> {this.state.tResultDescript}</h3>
                                     </div>
                                     <div className='approval'>
-                                        <h3>Bruce Lee Approvals: {this.state.BLApprovals} <br></br> Cost: 5 Chops</h3>
+                                        <h3>Bruce Lee Approvals: {this.state.BLApprovals} <br></br> Cost: 5 Tourney Wins</h3>
                                         <input type='submit' value="Bruce Lee Approval" onClick={this.handleBLClick}></input>          
                                     </div>
                                 </div>
