@@ -1,0 +1,20 @@
+.tourney, .approval {
+    height: 50%;
+    position: relative;
+}
+
+.tourney input, .approval input {
+    margin-top: 30px;
+    margin-bottom: 40px;
+}
+
+.tourney {
+    background-image: $greyGrade, url(/assets/tournament.jpg);
+    background-position: center;
+    background-size: cover;
+}
+
+.approval {
+    background-image: $greyGrade, url(/assets/approvalStage.png);
+    background-size: cover;
+}

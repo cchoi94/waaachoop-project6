@@ -8,14 +8,6 @@ import swal from 'sweetalert'
 
 const dbRef = firebase.database().ref('/leaderBoard');
 
-class Landing extends React.Component {
-    
-    
-    componentDidMount() {
-        
-    }
-}
-
 class App extends React.Component {
     constructor() {
         super();
@@ -31,10 +23,11 @@ class App extends React.Component {
             BLApprovalCost: 5,
             increaseCost: 1.10,
             timer: 360,
-            nameValue: '',
-            leaderBoardArray: [],
-            
+            nameValue: 'Unknown',
+            leaderBoard: [],
+            booVar: false,
         };
+        
         this.handleChopClick = this.handleChopClick.bind(this);
         this.handleMasteryClick = this.handleMasteryClick.bind(this);
         this.handleJTClick = this.handleJTClick.bind(this);
@@ -45,15 +38,18 @@ class App extends React.Component {
     
     componentDidMount() {
         dbRef.on('value', (snapshot) => {
-            const leaderBoardArray = [];
+            const newLeaderBoardArray = [];
+            newLeaderBoardArray.sort((a, b) => {
+                return a.score - b.score;
+            });
             const firebaseItems = snapshot.val();
             for (let key in firebaseItems) {
             const firebaseItem = firebaseItems[key];
             firebaseItem.id = key;
-            leaderBoardArray.push(firebaseItem);
+            newLeaderBoardArray.push(firebaseItem);
             }
             this.setState({
-                leaderBoard: leaderBoardArray,    
+                leaderBoard: newLeaderBoardArray,    
             })
         });
         
@@ -72,7 +68,7 @@ class App extends React.Component {
                 chops: this.state.chops + this.state.mastery * 1,
                 timer: timer
             })
-        }, 20);
+        }, 500);
     }
    
     
@@ -83,17 +79,13 @@ class App extends React.Component {
             chops: 0,
         })
         
-        let leaderBoard = this.state.leaderBoardArray;
-        let name = this.state.nameValue;
-        let approvals = this.state.BLApprovals;
-        leaderBoard.push({
-            name: name,
-            score: approvals,
-        })
         
-        for (let i = 0; i < 5; i++) 
-        
-        dbRef.push(leaderBoard)
+        let newLeaderBoard = {
+            score: this.state.BLApprovals,
+            user: this.state.nameValue
+        }
+                
+        dbRef.push(newLeaderBoard)
     }
     
     handleNameChange(event) {
@@ -104,16 +96,20 @@ class App extends React.Component {
     
     handleNameSubmit(event) {
         let name = this.state.nameValue
-        swal("Welcome Warrior", 
-             "Chops are life! Gain chops by clicking! Through time you will master chops and win chopping tournaments for our ultimate goal of gaining Bruce Lee's Approval!");
-        document.getElementById('nameForm').reset()
+        swal({
+            title: `Welcome ${this.state.nameValue}`,
+            text: `Chops are life! Gain chops by clicking! 
+            Master chops and win tournaments to get the most approvals from Bruce Lee!`,
+        });
         event.preventDefault();
+        document.getElementById('nameForm').reset()
     }
     
-    handleChopClick() {
+    handleChopClick(e) {
         let chop = this.state.chops + 1;
-        this.setState({
-            chops: chop,
+            this.setState({
+                chops: chop,
+                booVar: !this.state.booVar,
         });
     }
     
@@ -180,41 +176,69 @@ class App extends React.Component {
     
     
     render() {
+//        let hideLand = (this.state.booVar) ? 'hidden' : 'landingPage';
+        let spriteClass = (this.state.booVar) ? null : 'spriteOne';
         return (
             <div className='app'>
                 <header className='landingPage'>
                     <div className='wrapper'>
                         <h1>Waaa<br></br>Chooop!!</h1> 
-                        <form className='nameForm' id='nameForm' onSubmit={this.handleNameSubmit}>
+                        <form className='nameForm' id='nameForm' onSubmit={this.handleNameSubmit} >
                         <input type="text" value={this.nameValue} placeholder="Enter your Name" onChange={this.handleNameChange}></input>
                         <h5>Press Enter to Start</h5>
                         </form>
                     </div>
                 </header>
-                <div className='container'>
-                    <section className='vega'>
-                        <input type="submit" value="Chop" onClick={this.handleChopClick}></input>     
-                        <input type="submit" value="Progress Chop" onClick={this.handleMasteryClick}></input>          
-                        <input type="submit" value="Join Chopping Tournament" onClick={this.handleJTClick}></input>          
-                        <input type="submit" value="Bruce Lee Approval" onClick={this.handleBLClick}></input>          
+                <section className='game'>
+                    <div className='wrapper'>
+                        <div className='timer'>
+                            <h2>Time:{this.state.timer} Chop Secs</h2>
+                        </div>
+                            <div className='gameBoard'>
+                                <div className='TCBox clearfix'>
+                                    <div className='chopText'>
+                                        <div className='chops'>
+                                            <h3>Chops <br></br> {this.state.chops}</h3>
+                                        </div>
+                                        <div className='mastery'>
+                                            <h3>Mastery <br></br> {this.state.mastery}</h3>
+                                            <h3>Cost: {this.state.masteryCost} Chops </h3>
+                                        </div>
+                                    </div>
+                                            <input type="submit" value="Progress Chop" onClick={this.handleMasteryClick}></input>          
+                                    <div className={spriteClass} onClick={this.state.HandleChopClick}></div>
+                                    <div className='spriteTwo'></div>
+                                </div>
+                                <div className='ATBox'>
+                                    <div className='tourney'>
+                                        <h3>Tournaments Won: {this.state.tourneysWon} <br></br> Cost: 100 Chops</h3>
+                                        <input type="submit" value="Join Chopping Tournament" onClick={this.handleJTClick}></input>
+                                        <h3>Tournament Result: <br></br> {this.state.tResultDescript}</h3>
+                                    </div>
+                                    <div className='approval'>
+                                        <h3>Bruce Lee Approvals: {this.state.BLApprovals} <br></br> Cost: 5 Chops</h3>
+                                        <input type='submit' value="Bruce Lee Approval" onClick={this.handleBLClick}></input>          
+                                    </div>
+                                </div>
+                            </div>
+                        <input className='chopClick' type='submit' value='Chop' onClick={this.handleChopClick}></input>     
+                    </div>
+                </section>
+                    <section className='leaderBoard'>
+                        <div className='wrapper'>
+                           <h1>The Chopping Board</h1>
+                                {this.state.leaderBoard.map((item) => {
+                                    return (
+                                        <div className='LBResults'>
+                                            <h3>{item.user}</h3>
+                                            <h3>{item.score}</h3>
+                                        </div>
+                                    );
+                                })}
+                        </div>
                     </section>
-                    <section className='displayAssets'>
-                        <ul>
-                            <li>Make Every Second Count! {this.state.timer} Chop Seconds Left</li>
-                            <li>Chops: {this.state.chops}</li>
-                            <li>Chop Mastery: {this.state.mastery} / {this.state.masteryCost} Chops Required!</li>
-                            <li>Tournaments Won: {this.state.tourneysWon}</li>
-                            <li>Tournament Result: {this.state.tResultDescript}</li>
-                            <li>Bruce Lee Approvals: {this.state.BLApprovals}</li>
-                        </ul> 
-                        <div></div>   
-                    </section>
-                    <section>
-                        
-                    </section>
-                </div>
             </div>
-        )
+        );
     }
 }
 

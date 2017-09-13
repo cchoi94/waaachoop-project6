@@ -1,7 +1,7 @@
 .landingPage {
     height: 100vh;
     text-align: center;
-    background-image:linear-gradient(rgba(21, 19, 19, 0.7) 5%, rgba(21, 19, 19, 0.7) 100%), url(/assets/heroImg2.gif);
+    background-image: $blackGrade, url(../../../assets/heroImg2.gif);
     background-position: bottom;
     background-size: cover;
 }
@@ -24,7 +24,7 @@
     animation:rotate 2s linear infinite;
     font-size: 100px;
     padding: 100px 0;
-    color: #f77c2f;
+    color: $orange;
     line-height: 150px;
 }
 
@@ -35,13 +35,13 @@
 .landingPage h3 {
     line-height: 30px;
     margin: 20px;
-    color: #dbdbff;
+    color: $lightPurple;
 }
 
 .landingPage p {
     text-align: left;
     margin-left: 50px;
-    color: #dbdbff;
+    color: $lightPurple;
 }
 
 .nameForm {
@@ -57,14 +57,14 @@
     display: inline-block;
     width: 500px;
     text-align: center;
-}
-
-.nameForm input[type=text]:focus, 
-.nameForm input::placeholder { 
-    outline: none;
-    font-family: 'Press Start 2P';
+    font-family: $fontFam;
     font-size: 20px;
-    color: #dbdbff;
+}
+ 
+.nameForm input::placeholder { 
+    font-family: $fontFam;
+    font-size: 20px;
+    color: $lightPurple;
 }
 
 @keyframes flash {

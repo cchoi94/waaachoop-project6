@@ -1,3 +1,14 @@
+$fontFam: 'Press Start 2P';
+$orange: #f77c2f;
+$lightPurple: #dbdbff;
+$white: #fff8f4;
+$brown: #935f42;
+$border: 2px solid;
+$borderRad: 20px;
+$borderShad: 0px 8px 8px -6px rgba(0,0,0,0.75);
+$blackGrade: linear-gradient(rgba(21, 19, 19, 0.7) 5%, rgba(21, 19, 19, 0.7) 100%);
+$greyGrade: linear-gradient(rgba(39, 34, 34, 0.4) 5%, rgba(39, 34, 34, 0.4) 100%);
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -6,13 +17,22 @@
 
 html {
     background-color: #fff;
-    font-family: 'Press Start 2P';
+    font-family: $fontFam;
     font-size: 14px;
     text-rendering: optimizeLegibility;
 }
 
-.wrapper {
-    max-width: 1170px;
-    margin: 0 auto;
-    position: relative;
+.clearfix:after {
+    visibility: hidden; 
+    display: block; 
+    content: " "; 
+    clear: both; 
+}
+
+input[type=text]:focus, input[type=submit]:focus{
+    outline: none;
+}
+
+.hidden {
+    display: none;
 }

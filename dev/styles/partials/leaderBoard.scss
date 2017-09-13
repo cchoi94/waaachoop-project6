@@ -1,0 +1,60 @@
+.leaderBoard {
+    background-image: $blackGrade,url(../../../assets/leaderBoard.jpg);
+    background-size: cover;
+    color: $lightPurple;
+    padding: 50px 0;
+}
+
+@keyframes roygbiv {
+    0% {
+        border-color: red
+    }
+    
+    20% {
+        border-color: orange
+    }
+    
+    40% {
+        border-color: green
+    }
+    
+    60% {
+        border-color: blue
+    }
+    
+    80% {
+        border-color: indigo
+    }
+    
+    100% {
+        border-color: violet
+    }
+}
+
+.leaderBoard .wrapper {
+    animation: roygbiv 15s linear infinite;
+    border: 15px double;
+    max-width: 1170px;
+    margin: 0 auto;
+    position: relative;
+    text-align: center;
+    border-radius: $borderRad;
+    padding: 35px 0;
+}
+
+.leaderBoard h1 {
+    font-size: 25px;
+    text-transform: uppercase;
+}
+
+.LBResults {
+    display: flex;
+    align-content: space-between;
+    justify-content: center;
+    margin: 20px;
+    font-size: 20px;
+}
+
+.LBResults h3 {
+    padding: 10px 50px;;
+}
