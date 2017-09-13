@@ -97,9 +97,11 @@ class App extends React.Component {
     handleNameSubmit(event) {
         let name = this.state.nameValue
         swal({
-            title: `Welcome ${this.state.nameValue}`,
+            title: `Welcome ${this.state.nameValue} to Waaa Chooop Dojo!`,
             text: `Chops are life! Gain chops by clicking! 
-            Master chops and win tournaments to get the most approvals from Bruce Lee!`,
+            Gain Mastery as you chop and in return, mastery will help you chop faster! 
+            Finally, join tournaments with every 100 chops and ever 5 tournament wins will gain you approvals from Bruce Lee! Prove yourself
+            on The Chopping Board.`,
         });
         event.preventDefault();
         document.getElementById('nameForm').reset()
