@@ -2,26 +2,30 @@
     background-image: $greyGrade, url(/assets/dojo.png);
     background-position: center;
     background-size: cover;
-    width: 70%;
+    width: 80%;
     position: relative;
+    border-left: $border $brown;
+    border-top: $border $brown;
+    border-bottom: $border $brown;
 }
 
 .chopText {
     display: flex;
-    padding: 15px;
+    padding: 10px 0;
 }
 
 .chops, .mastery {
     width: 50%;
     line-height: 35px;
+    padding: 25px 0;
 }
 
-.spriteOne , .spriteTwo{
+.spriteOne , .spriteTwo {
     background-position: bottom;
     background-repeat: no-repeat;
     background-size: contain;
     height: 250px;
-    margin: 50px 0;
+    margin: 40px 0;
     width: 100%;
 }
 

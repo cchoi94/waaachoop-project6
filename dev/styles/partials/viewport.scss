@@ -1,0 +1,51 @@
+@mixin respond-to($breakpoint) {
+    @if $breakpoint=='medium' {
+        @media (max-width: 800px) {
+            @content;
+        }
+    }
+}
+
+@include respond-to ('medium') {
+    .wrapper {
+        max-width: 800px;
+        margin: 0 auto;
+        position: relative;
+    }
+    h3 {
+        font-size: 75%;
+        margin: 0;
+        line-height: 28px;
+    }
+    .landingPage h1 {
+        font-size: 40px;
+    }
+    .gameBoard {
+        display: block;
+        overflow: hidden;
+        width: 100%;
+    }
+    .TCBox {
+        height: 30vh;
+        width: 100%;
+    }
+    .approval,
+    .tourney {
+        height: 23vh;
+        text-align: left;
+        padding-left: 10px;
+    }
+    .spriteOne,
+    .spriteTwo {
+        z-index: 20;
+        position: absolute;
+        margin-left: 5%;
+        height: 154px;
+        width: 20%;
+        top: 20%;
+        margin: 15px 0;
+    }
+    .spriteOne {
+        z-index: 30;
+    }
+}

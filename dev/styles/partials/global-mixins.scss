@@ -36,3 +36,22 @@ input[type=text]:focus, input[type=submit]:focus{
 .hidden {
     display: none;
 }
+
+
+.swal-title {
+    line-height: 40px;
+} 
+
+.swal-text {
+    line-height: 30px;
+}
+
+.swal-footer {
+    text-align: center;
+}
+
+.swal-button, .swal-button--confirm {
+    text-align: center;
+    display: inline-block;
+    width: 250px;
+}

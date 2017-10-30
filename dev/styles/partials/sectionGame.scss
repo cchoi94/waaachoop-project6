@@ -1,30 +1,29 @@
 .game {
     text-align: center;
     background: $white;
-    padding: 20px 0;
+    height: 100vh;
 }
 
-.game .wrapper{
+.game .wrapper {
     max-width: 100%;
     margin: 0 auto;
     position: relative;
 }
 
 .timer {
-    padding: 20px 0;
-    margin-bottom: 10px;
+    padding: 5vh 0;
+    margin-top: 8px;
     color: $white;
     background-image: $blackGrade, url(../../../assets/timerBackground.png);
-    border-radius: $borderRad;
     letter-spacing: 2px;
     font-size: 12px;
     text-transform: uppercase;
 }
 
 .chopClick {
-    width: 100%;
-    height: 80px;
-    margin: 12px 0;
+    width: 90%;
+    height: 10vh;
+    margin: 8px 0px;
     font-size: 40px;
 }
 
@@ -53,8 +52,7 @@
 }
 
 .TCBox, .approval, .tourney  {
-    border-radius: $borderRad;
     color: $lightPurple;
-    border: $border $brown;
+    height: 74vh;
 }
 

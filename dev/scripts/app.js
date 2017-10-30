@@ -25,7 +25,9 @@ class App extends React.Component {
             timer: 360,
             nameValue: 'Unknown',
             leaderBoard: [],
-            booVar: false,
+            booVarLand: false,
+            booVarChop: false,
+            
         };
         
         this.handleChopClick = this.handleChopClick.bind(this);
@@ -63,7 +65,7 @@ class App extends React.Component {
             else if (this.state.timer === 0) {
                 this.clear(timerId)
             }
-            
+        
             this.setState ({ 
                 chops: this.state.chops + this.state.mastery * 1,
                 timer: timer
@@ -105,13 +107,16 @@ class App extends React.Component {
         });
         event.preventDefault();
         document.getElementById('nameForm').reset()
+        this.setState({
+            booVarLand: !this.state.booVarLand,
+        })
     }
     
     handleChopClick(e) {
         let chop = this.state.chops + 1;
             this.setState({
                 chops: chop,
-                booVar: !this.state.booVar,
+                booVarChop: !this.state.booVarChop,
         });
     }
     
@@ -178,15 +183,18 @@ class App extends React.Component {
     
     
     render() {
-//        let hideLand = (this.state.booVar) ? 'hidden' : 'landingPage';
-        let spriteClass = (this.state.booVar) ? null : 'spriteOne';
+        let spriteClass = (this.state.booVarChop) ? null : 'spriteOne';
+        let hideLanding = (this.state.booVarLand) ? 'hidden' : 'landingPage';
+        
+        
         return (
             <div className='app'>
-                <header className='landingPage'>
+                <header className={hideLanding}>
                     <div className='wrapper'>
                         <h1>Waaa<br></br>Chooop!!</h1> 
                         <form className='nameForm' id='nameForm' onSubmit={this.handleNameSubmit} >
-                        <input type="text" value={this.nameValue} placeholder="Enter your Name" onChange={this.handleNameChange}></input>
+                        <input type="text"  value={this.nameValue} placeholder="Enter your Name" onFocus={(e) => e.target.placeholder = ""} 
+                        onBlur={(e) => e.target.placeholder = "Enter your Name"} onChange={this.handleNameChange}></input>
                         <h5>Press Enter to Start</h5>
                         </form>
                     </div>
@@ -197,7 +205,7 @@ class App extends React.Component {
                             <h2>Time:{this.state.timer} Chop Secs</h2>
                         </div>
                             <div className='gameBoard'>
-                                <div className='TCBox clearfix'>
+                                < div className = 'TCBox clearfix' >
                                     <div className='chopText'>
                                         <div className='chops'>
                                             <h3>Chops <br></br> {this.state.chops}</h3>
@@ -245,67 +253,3 @@ class App extends React.Component {
 }
 
 ReactDOM.render(<App />, document.getElementById('app'));
-
-
-// how to stop interval
-// 
-
-// Buttons add plus one iResource whenever it is clicked
-// if iResources are greater or equal to 10
-// then the user is allowed to spend 10 iResource to get 1 RResource
-
-// when 10 RResources are accumulated
-// user is allowed to buy one gResource
-// 1 gResources adds 1 iResource with a set interval of 1000ms
-
-// mResource = 50 iResources
-// mResources are used to get lVillage
-// To attempt to get 1 lVillage costs a minimum of 10 mResource
-// input the number of mResource you would like to commit to a lVillage
-// if 10 resources are committed then there is a 50% chance of true
-// each extra 1 mResources committed adds an extra 5% to success rate
-
-// After time or limit of turns end, then game ends
-// the number of villages liberated would be posted on firebase on a leaderboard
-
-// Chops, Mastery(gives clicks), spend chops to fight tournment, 5 tournament wins get 1 bruce lee
-
-// write a function in the app that when timer state = 0, run swal with score and pic 
-
-// grab the name, grab Bruce Lee Approvals
-
-
-//        cardGame.newLead = (timer, string) => {
-//    let username = 'noName';
-//    $('#playerName').empty();
-//    if ($('#playerName').val() != "") {
-//        username = $('#playerName').val();
-//    }
-//    cardGame.leadBoard.push({
-//        name: username,
-//        time: timer,
-//        timeString: string
-//    })
-//}
-//
-//cardGame.displayLead = () => {
-//    cardGame.leadBoard.on("value", (scores) => {
-//        let topFive = [];
-//        let dataArray = scores.val();
-//        let scoresArray = [];
-//        let boardString = '<h2>Leaderboard</h2>';
-//
-//        for (let key in dataArray) {
-//            scoresArray.push(dataArray[key]);
-//        }
-//
-//        scoresArray.sort((a, b) => {
-//            return a.time - b.time;
-//        })
-//
-//        for (let i = 0; i < 5; i++) {
-//            boardString += (`<p>${scoresArray[i].name} : ${scoresArray[i].timeString}</p>`);            
-//        }
-//        $('.leaderBoard').html(boardString);
-//    })
-//}

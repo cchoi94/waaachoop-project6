@@ -12,9 +12,13 @@
     background-image: $greyGrade, url(/assets/tournament.jpg);
     background-position: center;
     background-size: cover;
+    border-top: $border $brown;
+    border-right: $border $brown;
 }
 
 .approval {
     background-image: $greyGrade, url(/assets/approvalStage.png);
     background-size: cover;
+    border-right: $border $brown;
+    border-bottom: $border $brown;
 }

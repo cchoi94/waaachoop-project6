@@ -21,6 +21,20 @@ input[type=text]:focus, input[type=submit]:focus {
 .hidden {
   display: none; }
 
+.swal-title {
+  line-height: 40px; }
+
+.swal-text {
+  line-height: 30px; }
+
+.swal-footer {
+  text-align: center; }
+
+.swal-button, .swal-button--confirm {
+  text-align: center;
+  display: inline-block;
+  width: 250px; }
+
 .landingPage {
   height: 100vh;
   text-align: center;
@@ -37,7 +51,7 @@ input[type=text]:focus, input[type=submit]:focus {
     transform: rotate(2deg); } }
 
 .landingPage h1 {
-  animation: rotate 2s linear infinite;
+  animation: rotate 1s linear infinite;
   font-size: 100px;
   padding: 100px 0;
   color: #f77c2f;
@@ -66,7 +80,7 @@ input[type=text]:focus, input[type=submit]:focus {
   color: #dbdbff;
   border: none;
   display: inline-block;
-  width: 500px;
+  max-width: 100%;
   text-align: center;
   font-family: "Press Start 2P";
   font-size: 20px; }
@@ -93,7 +107,7 @@ input[type=text]:focus, input[type=submit]:focus {
 .game {
   text-align: center;
   background: #fff8f4;
-  padding: 20px 0; }
+  height: 100vh; }
 
 .game .wrapper {
   max-width: 100%;
@@ -101,19 +115,18 @@ input[type=text]:focus, input[type=submit]:focus {
   position: relative; }
 
 .timer {
-  padding: 20px 0;
-  margin-bottom: 10px;
+  padding: 5vh 0;
+  margin-top: 8px;
   color: #fff8f4;
   background-image: linear-gradient(rgba(21, 19, 19, 0.7) 5%, rgba(21, 19, 19, 0.7) 100%), url(../../../assets/timerBackground.png);
-  border-radius: 20px;
   letter-spacing: 2px;
   font-size: 12px;
   text-transform: uppercase; }
 
 .chopClick {
-  width: 100%;
-  height: 80px;
-  margin: 12px 0;
+  width: 90%;
+  height: 10vh;
+  margin: 8px 0px;
   font-size: 40px; }
 
 .game input[type=submit] {
@@ -137,31 +150,34 @@ input[type=text]:focus, input[type=submit]:focus {
   display: inline-block; }
 
 .TCBox, .approval, .tourney {
-  border-radius: 20px;
   color: #dbdbff;
-  border: 2px solid #935f42; }
+  height: 74vh; }
 
 .TCBox {
   background-image: linear-gradient(rgba(39, 34, 34, 0.4) 5%, rgba(39, 34, 34, 0.4) 100%), url(/assets/dojo.png);
   background-position: center;
   background-size: cover;
-  width: 70%;
-  position: relative; }
+  width: 80%;
+  position: relative;
+  border-left: 2px solid #935f42;
+  border-top: 2px solid #935f42;
+  border-bottom: 2px solid #935f42; }
 
 .chopText {
   display: flex;
-  padding: 15px; }
+  padding: 10px 0; }
 
 .chops, .mastery {
   width: 50%;
-  line-height: 35px; }
+  line-height: 35px;
+  padding: 25px 0; }
 
 .spriteOne, .spriteTwo {
   background-position: bottom;
   background-repeat: no-repeat;
   background-size: contain;
   height: 250px;
-  margin: 50px 0;
+  margin: 40px 0;
   width: 100%; }
 
 .spriteOne {
@@ -184,11 +200,15 @@ input[type=text]:focus, input[type=submit]:focus {
 .tourney {
   background-image: linear-gradient(rgba(39, 34, 34, 0.4) 5%, rgba(39, 34, 34, 0.4) 100%), url(/assets/tournament.jpg);
   background-position: center;
-  background-size: cover; }
+  background-size: cover;
+  border-top: 2px solid #935f42;
+  border-right: 2px solid #935f42; }
 
 .approval {
   background-image: linear-gradient(rgba(39, 34, 34, 0.4) 5%, rgba(39, 34, 34, 0.4) 100%), url(/assets/approvalStage.png);
-  background-size: cover; }
+  background-size: cover;
+  border-right: 2px solid #935f42;
+  border-bottom: 2px solid #935f42; }
 
 .leaderBoard {
   background-image: linear-gradient(rgba(21, 19, 19, 0.7) 5%, rgba(21, 19, 19, 0.7) 100%), url(../../../assets/leaderBoard.jpg);
@@ -233,3 +253,38 @@ input[type=text]:focus, input[type=submit]:focus {
 
 .LBResults h3 {
   padding: 10px 50px; }
+
+@media (max-width: 800px) {
+  .wrapper {
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative; }
+  h3 {
+    font-size: 75%;
+    margin: 0;
+    line-height: 28px; }
+  .landingPage h1 {
+    font-size: 40px; }
+  .gameBoard {
+    display: block;
+    overflow: hidden;
+    width: 100%; }
+  .TCBox {
+    height: 30vh;
+    width: 100%; }
+  .approval,
+  .tourney {
+    height: 23vh;
+    text-align: left;
+    padding-left: 10px; }
+  .spriteOne,
+  .spriteTwo {
+    z-index: 20;
+    position: absolute;
+    margin-left: 5%;
+    height: 154px;
+    width: 20%;
+    top: 20%;
+    margin: 15px 0; }
+  .spriteOne {
+    z-index: 30; } }
